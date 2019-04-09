@@ -1,9 +1,6 @@
 import com.oocourse.elevator2.ElevatorInput;
 import com.oocourse.elevator2.PersonRequest;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-
 public class Thread1 extends Thread {
     private final QueueAll temp;
 

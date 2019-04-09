@@ -20,7 +20,7 @@ public class ElevatorRun {
         }
     }
 
-    void elevatorMove(int upOrDown) {
+    synchronized void elevatorMove(int upOrDown) {
         if (upOrDown == 1) {
             elevatorUp();
         } else {
@@ -71,7 +71,7 @@ public class ElevatorRun {
         TimableOutput.println("ARRIVE-" + a);
     }
 
-    void doorOpen(int stop) {
+    synchronized void doorOpen(int stop) {
         TimableOutput.println("OPEN-" + stop);
         try {
             Thread.sleep(OPEN);
@@ -80,7 +80,7 @@ public class ElevatorRun {
         }
     }
 
-    void doorClose(int stop) {
+    synchronized void doorClose(int stop) {
         try {
             Thread.sleep(CLOSE);
         } catch (Exception e) {
@@ -95,14 +95,6 @@ public class ElevatorRun {
 
     void moveOut(int stop,int id) {
         TimableOutput.println(String.format("OUT-%d-%d", id, stop));
-    }
-
-    public void setOutputState(Boolean a) {
-        outputState = a;
-    }
-
-    public boolean getOutputState() {
-        return outputState;
     }
 
     public int getStop() {
