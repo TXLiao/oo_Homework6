@@ -13,14 +13,14 @@ public class ElevatorRun {
     private ArrayList<PersonRequest> elevatorQueue =
             new ArrayList<PersonRequest>();
 
-    synchronized void elevatorGetIn(PersonRequest a) {
+    void elevatorGetIn(PersonRequest a) {
         if (a != null) {
             elevatorQueue.add(a);
             moveIn(stop, a.getPersonId());
         }
     }
 
-    synchronized void elevatorMove(int upOrDown) {
+    void elevatorMove(int upOrDown) {
         if (upOrDown == 1) {
             elevatorUp();
         } else {
@@ -62,7 +62,7 @@ public class ElevatorRun {
         elevatorArrive(stop);
     }
 
-    synchronized void elevatorArrive(int a) {
+    void elevatorArrive(int a) {
         try {
             Thread.sleep(PERFLOOR);
         } catch (Exception e) {
@@ -71,7 +71,7 @@ public class ElevatorRun {
         TimableOutput.println("ARRIVE-" + a);
     }
 
-    synchronized void doorOpen(int stop) {
+    void doorOpen(int stop) {
         TimableOutput.println("OPEN-" + stop);
         try {
             Thread.sleep(OPEN);
@@ -80,7 +80,7 @@ public class ElevatorRun {
         }
     }
 
-    synchronized void doorClose(int stop) {
+    void doorClose(int stop) {
         try {
             Thread.sleep(CLOSE);
         } catch (Exception e) {

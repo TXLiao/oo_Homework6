@@ -73,6 +73,24 @@ public class QueueAll {
         }
     }
 
+
+    public synchronized boolean isEmptyFloorEach(int stop,int i) {
+        if (i > 0) {
+            if (stop < 0) {
+                return queueUp[stop + 3].isEmpty();
+            } else {
+                return queueUp[stop + 2].isEmpty();
+            }
+        } else {
+            if (stop < 0) {
+                return queueDown[stop + 3].isEmpty();
+            } else {
+                return queueDown[stop + 2].isEmpty();
+            }
+        }
+    }
+
+
     public void subCount() {
         count--;
     }

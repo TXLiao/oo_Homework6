@@ -75,7 +75,7 @@ public class Thread2 extends Thread {
 
     void moreThanOne(int i) {
         try {
-            while (!temp.isEmptyFloor(i)) {
+            while (!temp.isEmptyFloorEach(i,upOrDown)) {
                 PersonRequest current = temp.getPerson(i, upOrDown);
                 if (current != null) {
                     temp.subCount();
