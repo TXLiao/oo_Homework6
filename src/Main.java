@@ -9,8 +9,8 @@ public class Main {
         input.start();
         output.start();
         try {
-            input.join();
             output.join();
+            input.join();
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

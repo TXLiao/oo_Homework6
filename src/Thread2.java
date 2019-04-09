@@ -58,7 +58,7 @@ public class Thread2 extends Thread {
         }
     }
 
-    synchronized void judgeFloor(int i,int direction) {
+    void judgeFloor(int i,int direction) {
         try {
             PersonRequest a = temp.getPerson(i, direction);
             if (a != null) {
@@ -73,7 +73,7 @@ public class Thread2 extends Thread {
         }
     }
 
-    synchronized void moreThanOne(int i) {
+    void moreThanOne(int i) {
         try {
             while (!temp.isEmptyFloor(i)) {
                 PersonRequest current = temp.getPerson(i, upOrDown);
@@ -81,8 +81,8 @@ public class Thread2 extends Thread {
                     temp.subCount();
                     elevator.elevatorGetIn(current);
                 }
-                return;
             }
+            return;
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }

@@ -62,7 +62,7 @@ public class ElevatorRun {
         elevatorArrive(stop);
     }
 
-    void elevatorArrive(int a) {
+    synchronized void elevatorArrive(int a) {
         try {
             Thread.sleep(PERFLOOR);
         } catch (Exception e) {
