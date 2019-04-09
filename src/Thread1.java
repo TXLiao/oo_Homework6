@@ -24,7 +24,9 @@ public class Thread1 extends Thread {
                     temp.setPerson(request.getFromFloor(),j,request);
                 }
             }
+            Thread.sleep(200);
             temp.setInputEnd(true);
+            Thread.sleep(200);
             elevatorInput.close();
         } catch (Exception e) {
             System.out.println(e.getMessage());

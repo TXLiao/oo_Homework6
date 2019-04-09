@@ -73,7 +73,6 @@ public class QueueAll {
         }
     }
 
-
     public synchronized boolean isEmptyFloorEach(int stop,int i) {
         if (i > 0) {
             if (stop < 0) {
@@ -89,7 +88,6 @@ public class QueueAll {
             }
         }
     }
-
 
     public void subCount() {
         count--;
