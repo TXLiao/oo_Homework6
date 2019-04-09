@@ -13,7 +13,7 @@ public class ElevatorRun {
     private ArrayList<PersonRequest> elevatorQueue =
             new ArrayList<PersonRequest>();
 
-    public void elevatorGetIn(PersonRequest a) {
+    synchronized void elevatorGetIn(PersonRequest a) {
         if (a != null) {
             elevatorQueue.add(a);
             moveIn(stop, a.getPersonId());

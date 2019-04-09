@@ -4,7 +4,8 @@ public class Thread2 extends Thread {
     private final QueueAll temp;
     private int stop = 1;
     private int upOrDown = 1;   //up 1   down -1
-    ElevatorRun elevator = new ElevatorRun();
+    private ElevatorRun elevator = new ElevatorRun();
+
     public Thread2(QueueAll m) {
         this.temp = m;
     }
@@ -31,6 +32,7 @@ public class Thread2 extends Thread {
                     temp.subCount();
                     elevator.doorOpen(stop);
                     elevator.elevatorGetIn(current);
+
                     moreThanOne(stop);
                     elevator.doorClose(stop);
                     while (!elevator.isEmptyElevator()) {
@@ -56,7 +58,7 @@ public class Thread2 extends Thread {
         }
     }
 
-    void judgeFloor(int i,int direction) {
+    synchronized void judgeFloor(int i,int direction) {
         try {
             PersonRequest a = temp.getPerson(i, direction);
             if (a != null) {
@@ -71,19 +73,19 @@ public class Thread2 extends Thread {
         }
     }
 
-    void moreThanOne(int i) {
+    synchronized void moreThanOne(int i) {
         try {
             while (!temp.isEmptyFloor(i)) {
                 PersonRequest current = temp.getPerson(i, upOrDown);
-                temp.subCount();
-                elevator.elevatorGetIn(current);
+                if (current != null) {
+                    temp.subCount();
+                    elevator.elevatorGetIn(current);
+                }
+                return;
             }
         } catch (Exception e) {
             System.out.println(e.getMessage());
         }
     }
 
-    void inAndOut() {
-
-    }
 }
