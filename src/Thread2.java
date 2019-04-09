@@ -17,9 +17,17 @@ public class Thread2 extends Thread {
                     PersonRequest current = temp.getPerson(stop,upOrDown);
                     ElevatorRun elevator = new ElevatorRun();
                     while (current == null) {
+                        upOrDown = temp.getInitPerson(stop);
                         elevator.elevatorMove(upOrDown);
                         stop = elevator.getStop();
                         current = temp.getPerson(stop,upOrDown);
+                        if (current == null) {
+                            current = temp.getPerson(stop,-upOrDown);
+
+                            if (current != null) {
+                                upOrDown = -upOrDown;
+                            }
+                        }
                         changeUpDown();
                     }
                     temp.subCount();

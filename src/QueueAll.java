@@ -76,4 +76,24 @@ public class QueueAll {
     public void subCount() {
         count--;
     }
+
+    public int getInitPerson(int stop) {
+        int  i;
+        int changeStop;
+        if (stop < 0) {
+            changeStop = stop + 3;
+        } else {
+            changeStop = stop + 2;
+        }
+        for (i = 0; i < 19; i++) {
+            if (!(queueUp[i].isEmpty() && queueDown[i].isEmpty())) {
+                break;
+            }
+        }
+        if (i < changeStop) {
+            return -1;
+        } else {
+            return 1;
+        }
+    }
 }
